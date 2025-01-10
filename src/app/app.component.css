@@ -1,0 +1,11 @@
+.cards{
+    margin-top: 50px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.card1{
+    display: grid;
+    grid-row-gap: 20px;
+}
+
