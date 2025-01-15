@@ -1,18 +1,19 @@
-<app-header></app-header>
+<app-header/>
 
-<div class="cards">
-    <div class="card1">
-        <app-user [user]="users[0]" (selectId)="select($event)"/>
-        <app-user [user]="users[1]" (selectId)="select($event)"/>
-        <app-user [user]="users[2]" (selectId)="select($event)"/>
+<main>
+    <div id="users">
+        @for (user of selectUser; track user.id) {
+            <app-users [users]="user" [selected]="user.id === getName?.id" (selectId)="select($event)"/>
+        }
     </div>
-
-    <div>
-        <app-task [url]="showImg"/>
-    </div>
-</div>
-
-
-
-
+    @if (getName) {
+        <div id="fallback">
+            <app-tasks [userId]="getName?.id" [name]="getName?.name"/>
+        </div>
+    }@else {
+        <div id="fallback">
+            <p>Click It</p>
+        </div>
+    }
+</main>
 

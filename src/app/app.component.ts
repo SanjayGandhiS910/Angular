@@ -1,25 +1,24 @@
 import { Component } from '@angular/core';
-import { DemoComponent } from './demo/demo.component';
-import { UserComponent } from './user/user.component';
-import { DUMMY_User } from './dummy_user';
-import { TaskComponent } from './task/task.component';
+import { HeaderComponent } from './header/header.component';
+import { UsersComponent } from './users/users.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { DUMMY_Users } from './dummy-users';
 
 @Component({
   selector: 'app-root',
-  imports: [DemoComponent, UserComponent, TaskComponent],
+  imports: [ HeaderComponent, UsersComponent, TasksComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'demo-angular';
-  users = DUMMY_User;
-  showImage = 1;
+  selectUser = DUMMY_Users;
+  selectId!: string;
 
-  get showImg(){
-    return this.users.find( (index) => index.id === this.showImage)?.url!;
+  get getName(): any{
+    return this.selectUser.find((task)=> task.id == this.selectId);
   }
 
-  select(id: number){
-    this.showImage = id;
+  select(id: string){
+     this.selectId = id;
   }
 }
